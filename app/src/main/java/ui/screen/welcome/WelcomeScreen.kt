@@ -32,7 +32,7 @@ fun WelcomeScreen(navController: NavController) {
 
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "Welcome to Receipts!",
+                    text = "Welcome to Cookio!",
                     style = MaterialTheme.typography.headlineLarge.copy(
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold

@@ -1,9 +1,3 @@
 <resources>
-    <string name="app_name">Superheroes</string>
-    <string name="hero1">kokakola</string>
-    <string name="hero2">toalet</string>
-    <string name="hero3">voda</string>
-    <string name="hero4">televizor</string>
-    <string name="hero5">moitor</string>
-    <string name="hero6">vrata</string>
+    <string name="app_name">Cookio</string>
 </resources>

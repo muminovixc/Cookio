@@ -59,7 +59,7 @@ fun AnimatedSplashScreen(navController: NavController) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Recipe World",
+                text = "C O O K I O",
                 fontSize = 42.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = MaterialTheme.colorScheme.onPrimary,

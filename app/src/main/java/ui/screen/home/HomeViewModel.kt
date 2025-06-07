@@ -6,6 +6,7 @@ import data.model.Recipe
 import data.repository.RecipeRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
@@ -15,13 +16,20 @@ class HomeViewModel : ViewModel() {
     private val _recipes = MutableStateFlow<List<Recipe>>(emptyList())
     val recipes: StateFlow<List<Recipe>> = _recipes
 
-    fun search(query: String) {
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
+
+    fun onSearchQueryChanged(query: String) {
+        _searchQuery.value = query
+        search(query)
+    }
+
+    private fun search(query: String) {
         viewModelScope.launch {
             try {
                 val response = repository.searchRecipes(query)
                 _recipes.value = response.results
             } catch (e: Exception) {
-                // handle error
                 _recipes.value = emptyList()
             }
         }

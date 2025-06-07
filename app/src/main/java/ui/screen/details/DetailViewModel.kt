@@ -19,7 +19,7 @@ class RecipeViewModel : ViewModel() {
                 val response = RetrofitInstance.api.getRecipeDetails(id)
                 _selectedRecipe.value = response
             } catch (e: Exception) {
-                // Error handling (npr. println(e.message))
+                 println(e.message)
             }
         }
     }

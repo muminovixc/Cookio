@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.np.fff.presentation.RecipeViewModel
 import ui.screen.home.DetailScreen
 import ui.screen.home.HomeScreen
+import ui.screen.welcome.WelcomeScreen
 
 @Composable
 fun AppNavigation() {
@@ -20,6 +21,9 @@ fun AppNavigation() {
     NavHost(navController, startDestination = "splash") {
         composable("splash") {
             AnimatedSplashScreen(navController)
+        }
+        composable("Welcome") {
+            WelcomeScreen(navController)
         }
         composable("home") {
             HomeScreen(navController)

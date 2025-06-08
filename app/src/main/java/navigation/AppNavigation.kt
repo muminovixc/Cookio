@@ -9,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.np.fff.presentation.RecipeViewModel
-import ui.screen.home.DetailScreen
+import ui.screen.details.DetailScreen
 import ui.screen.home.HomeScreen
 import ui.screen.welcome.WelcomeScreen
 

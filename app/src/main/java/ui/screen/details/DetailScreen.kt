@@ -1,4 +1,4 @@
-package ui.screen.home
+package ui.screen.details
 
 import android.content.Intent
 import android.net.Uri
@@ -18,6 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.np.fff.data.model.RecipeDetail
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.ui.graphics.Color
+
 
 fun extractListItemsFromHtml(html: String): List<String> {
     return Regex("<li>(.*?)</li>")
@@ -37,14 +41,24 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
     ) {
+        // Strelica za povratak
+        IconButton(
+            onClick = { navController.popBackStack() },
+            modifier = Modifier.padding(bottom = 8.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Back",
+                tint = Color.White
+            )
+        }
+
         Card(
             shape = RoundedCornerShape(20.dp),
             elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-
-                // Naslov
                 Text(
                     text = recipe.title,
                     style = MaterialTheme.typography.headlineSmall
@@ -52,7 +66,6 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Slika recepta sa klikom na Google
                 AsyncImage(
                     model = recipe.image,
                     contentDescription = recipe.title,
@@ -71,7 +84,6 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Sastojci
                 Text(
                     text = "Ingredients",
                     style = MaterialTheme.typography.titleMedium
@@ -89,9 +101,8 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Upute
                 Text(
-                    text = "instructions",
+                    text = "Instructions",
                     style = MaterialTheme.typography.titleMedium
                 )
                 Spacer(modifier = Modifier.height(8.dp))
@@ -106,12 +117,11 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
                         }
                     }
                 } else {
-                    Text("no available instructions.", style = MaterialTheme.typography.bodyMedium)
+                    Text("No available instructions.", style = MaterialTheme.typography.bodyMedium)
                 }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                // Dugme za pretragu
                 Button(
                     onClick = {
                         val encodedTitle = Uri.encode(recipe.title)
@@ -121,7 +131,7 @@ fun DetailScreen(navController: NavController, recipe: RecipeDetail) {
                     },
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Look for it on google")
+                    Text("Look for it on Google")
                 }
             }
         }

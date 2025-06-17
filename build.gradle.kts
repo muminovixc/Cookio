@@ -7,6 +7,6 @@ plugins {
 allprojects {
     repositories {
         google()
-         mavenCentral()
+        mavenCentral()
     }
 }
